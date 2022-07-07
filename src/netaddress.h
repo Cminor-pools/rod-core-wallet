@@ -197,7 +197,6 @@ class CNetAddr
         enum Network GetNetwork() const;
         std::string ToString() const;
         std::string ToStringIP() const;
-        uint64_t GetHash() const;
         bool GetInAddr(struct in_addr* pipv4Addr) const;
         Network GetNetClass() const;
 
