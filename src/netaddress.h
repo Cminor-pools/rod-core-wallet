@@ -472,6 +472,14 @@ class CNetAddr
 class CNetAddrHash
 {
 public:
+    CServiceHash()
+        : m_salt_k0{GetRand(std::numeric_limits<uint64_t>::max())},
+          m_salt_k1{GetRand(std::numeric_limits<uint64_t>::max())}
+    {
+    }
+
+    CServiceHash(uint64_t salt_k0, uint64_t salt_k1) : m_salt_k0{salt_k0}, m_salt_k1{salt_k1} {}
+
     size_t operator()(const CNetAddr& a) const noexcept
     {
         CSipHasher hasher(m_salt_k0, m_salt_k1);
